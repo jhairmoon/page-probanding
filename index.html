@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rock & Luna</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(ellipse at bottom, #0d0d0d 0%, #000000 100%);
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.2em;
+      text-shadow: 0 0 10px #f0f0f0;
+    }
+
+    p {
+      font-size: 1.2em;
+      max-width: 600px;
+      padding: 0 20px;
+      color: #cfcfcf;
+      text-shadow: 0 0 5px rgba(255,255,255,0.2);
+    }
+
+    .moon {
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle at 30% 30%, #eeeeee, #aaa);
+      border-radius: 50%;
+      box-shadow: 0 0 30px #fff, 0 0 60px #ffffff33;
+      margin-top: 40px;
+      animation: pulse 5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      width: 2px;
+      height: 2px;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.8em;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars"></div>
+
+  <h1>Entre estrellas y acordes</h1>
+  <p>
+    Esta noche no duerme...  
+    se queda escuchando la luna y el eco de tu voz.
+  </p>
+
+  <div class="moon"></div>
+
+  <audio autoplay loop>
+    <source src="https://raw.githubusercontent.com/jhairmoon/music/main/nigth.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML.
+  </audio>
+
+  <footer>JhairMoon 🌘✨</footer>
+
+  <script>
+    // Generador de estrellas aleatorias
+    const starContainer = document.querySelector('.stars');
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.animationDuration = `${1 + Math.random() * 3}s`;
+      starContainer.appendChild(star);
+    }
+  </script>
+
+</body>
+</html>
