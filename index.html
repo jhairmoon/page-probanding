@@ -96,25 +96,31 @@
 
   <div class="moon"></div>
 
-  <audio autoplay loop>
-    <source src="https://raw.githubusercontent.com/jhairmoon/music/main/nigth.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio HTML.
-  </audio>
+<!-- Audio (inicialmente silenciado) -->
+    <audio id="music" loop autoplay muted>
+      <source src="https://raw.githubusercontent.com/jhairmoon/music/main/nigth.mp3" type="audio/mpeg">
+      Tu navegador no soporta audio HTML.
+    </audio>
 
-  <footer>JhairMoon 🌘✨</footer>
-
-  <script>
-    // Generador de estrellas aleatorias
-    const starContainer = document.querySelector('.stars');
-    for (let i = 0; i < 100; i++) {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      star.style.top = `${Math.random() * 100}%`;
-      star.style.left = `${Math.random() * 100}%`;
-      star.style.animationDuration = `${1 + Math.random() * 3}s`;
-      starContainer.appendChild(star);
-    }
-  </script>
+    <script>
+      // Reproducir audio al hacer clic
+      document.body.addEventListener('click', () => {
+        const audio = document.getElementById('music');
+        audio.muted = false;
+        audio.play();
+      }, { once: true }); // Solo la primera vez
+        // Generador de estrellas aleatorias
+        const starContainer = document.querySelector('.stars');
+        for (let i = 0; i < 100; i++) {
+          const star = document.createElement('div');
+          star.classList.add('star');
+          star.style.top = `${Math.random() * 100}%`;
+          star.style.left = `${Math.random() * 100}%`;
+          star.style.animationDuration = `${1 + Math.random() * 3}s`;
+          starContainer.appendChild(star);
+        }
+      </script>
 
 </body>
 </html>
+
